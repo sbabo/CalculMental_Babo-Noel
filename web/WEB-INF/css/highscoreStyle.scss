@@ -1,0 +1,30 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-gap: 5px;
+    background-color: #fff;
+    color: #444;
+    margin: 5px;
+}
+
+.cellule {
+    width: 85%;
+    margin:auto;
+}
+
+.box {
+    background-color: #f4f5f7;
+    color: #000;
+    border-radius: 5px;
+    /*padding: 20px;*/
+    font-size: 150%;
+}
+
+.a {
+    background-color: #f4f5f7;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
