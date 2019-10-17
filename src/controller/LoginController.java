@@ -19,7 +19,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         LoginBean model = new LoginBean();
-        if (model.isConnected(request)) {
+        if ( model.isConnected(request) ) {
             response.sendRedirect(request.getContextPath() + PAGE_HOME_JSP);
         } else {
             request.getRequestDispatcher(PAGE_LOGIN_JSP).forward(request, response);

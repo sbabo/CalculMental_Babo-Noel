@@ -27,6 +27,10 @@ public class DAOFactory {
 
     public static IDAO<Player> getPlayerDAO() {
         IDAO<Player> dao = null;
+        System.out.println(mode);
+        System.out.println(dbUrl);
+        System.out.println(dbLogin);
+        System.out.println(dbPwd);
         switch ( mode ) {
             case "JDBC" :
                 dao = new PlayerDAO(dbUrl, dbLogin, dbPwd);

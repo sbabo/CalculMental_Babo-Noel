@@ -2,7 +2,7 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
-DROP DATABASE Calcul_Mental;
+DROP DATABASE IF EXISTS Calcul_Mental;
 CREATE DATABASE Calcul_Mental;
 
 #------------------------------------------------------------
