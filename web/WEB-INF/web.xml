@@ -32,4 +32,8 @@
             <include-prelude>/WEB-INF/jsp/tags_lib.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
+
+    <welcome-file-list>
+        <welcome-file>login</welcome-file>
+    </welcome-file-list>
 </web-app>
