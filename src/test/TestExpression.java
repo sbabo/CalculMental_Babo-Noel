@@ -6,6 +6,9 @@ public class TestExpression {
 
     public static void main(String args[]) {
         Expression ex = new Expression();
-        System.out.println(ex.generateCalcul(3, 10));
+        String rep = ex.generateCalcul(3, 10);
+        System.out.println(rep);
+
+        ex.resolveCalcul(rep);
     }
 }
