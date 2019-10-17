@@ -1,4 +1,5 @@
 /out/
+/web/WEB-INF/lib
 
 ### Eclipse ###
 .classpath
