@@ -24,4 +24,12 @@
         <param-name>DB_PWD</param-name>
         <param-value></param-value>
     </context-param>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <include-prelude>/WEB-INF/jsp/tags_lib.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>
