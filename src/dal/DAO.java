@@ -1,6 +1,6 @@
 package dal;
 
-public class DAO {
+public abstract class DAO<E> implements IDAO<E> {
     protected String dbUrl = "";
     protected String dbLogin = "";
     protected String dbPwd = "";

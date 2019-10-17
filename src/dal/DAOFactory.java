@@ -26,7 +26,7 @@ public class DAOFactory {
     }
 
     public static IDAO<Player> getPlayerDAO() {
-        IDAO<Player> dao;
+        IDAO<Player> dao = null;
         switch ( mode ) {
             case "JDBC" :
                 dao = new PlayerDAO(dbUrl, dbLogin, dbPwd);
@@ -38,5 +38,5 @@ public class DAOFactory {
         }
         return dao;
     }
-    }
+
 }
