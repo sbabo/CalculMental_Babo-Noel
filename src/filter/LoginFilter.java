@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter (urlPatterns ="/login")
+//@WebFilter (urlPatterns ="/login")
 public class LoginFilter implements Filter {
 
     @Override
