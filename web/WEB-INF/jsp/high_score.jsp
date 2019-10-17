@@ -63,7 +63,7 @@
              <td> Valeur B3 </td>
          </tr>
      </table>
-     <button type="button">Click Me!</button>
+     <a class="button" href="<c:url value="" />"/>
  </div>
 </body>
 </html>
