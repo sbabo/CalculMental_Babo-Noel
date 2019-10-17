@@ -9,6 +9,6 @@ public class TestExpression {
         String rep = ex.generateCalcul(3, 10);
         System.out.println(rep);
 
-        ex.resolveCalcul(rep);
+        System.out.println(ex.resolveCalcul(rep));
     }
 }

@@ -28,21 +28,38 @@ public class Expression {
         resultat.append(operandeUnaire + " ");
 
         resultat.append(tabOp.get(rand(4)) + " ");
-        resultat.append(tabOp.get(randUnaire(2)) + " ");
+        resultat.append(tabOp.get(randUnaire(1)) + " ");
 
         return resultat.toString();
     }
 
-    public Integer resolveCalcul(String calcul){
+    public Double resolveCalcul(String calcul){
 
-        int base = 0;
-        int operande = 0;
-        Stack stack = new Stack();
+        Double resultat = 0d;
+        Stack<Double> stack = new Stack();
         StringTokenizer st = new StringTokenizer(calcul, " ");
         while (st.hasMoreTokens()) {
-            System.out.println(st.nextToken());
+            String token = st.nextToken();
+
+            try {
+                Operator op = Operator.valueOf(token);
+                if ( op.getType() == 1 ) {
+                    Double op1 = 0d;
+                    Double op2 = 0d;
+                    op1 = stack.pop();
+                    op2 = stack.pop();
+                    stack.push(op.eval(op1, op2));
+                } else {
+                    Double op1 = 0d;
+                    op1 = stack.pop();
+                    stack.push(op.eval(op1));
+                }
+            } catch (Exception e ) {
+                stack.push(Double.parseDouble(token));
+            }
         }
-        return 0;
+        resultat = stack.pop();
+        return resultat;
     }
 
     public Integer rand(int max){
