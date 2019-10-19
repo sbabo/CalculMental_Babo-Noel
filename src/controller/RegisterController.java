@@ -31,6 +31,7 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RegistrationBean register = new RegistrationBean();
         register.register(req);
+        System.out.println(register.toString());
         req.setAttribute("registrationBean", register);
         doGet(req, resp);
 
