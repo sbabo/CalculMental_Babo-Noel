@@ -1,5 +1,6 @@
 package bo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -33,7 +34,7 @@ public class Expression {
         return resultat.toString();
     }
 
-    public Double resolveCalcul(String calcul){
+    public String resolveCalcul(String calcul){
 
         Double resultat = 0d;
         Stack<Double> stack = new Stack();
@@ -59,7 +60,39 @@ public class Expression {
             }
         }
         resultat = stack.pop();
-        return resultat;
+        DecimalFormat df = new DecimalFormat("0.00");
+        String resultFormat = df.format(resultat);
+        return resultFormat;
+    }
+
+    public String generateCalcVisuel (String valeur) {
+
+        StringBuilder resultat = new StringBuilder();
+        Stack<String> stack = new Stack();
+        StringTokenizer st = new StringTokenizer(valeur, " ");
+
+        while (st.hasMoreTokens()) {
+            String token = st.nextToken();
+
+            try {
+                Operator op = Operator.valueOf(token);
+                if ( op.getType() == 1 ) {
+                    String op1 = "";
+                    String op2 = "";
+                    op2 = stack.pop();
+                    op1 = stack.pop();
+                    stack.push("(" + op1 +  " " + op + " " + op2 +")");
+                } else {
+                    String op1 = "";
+                    op1 = stack.pop();
+                    stack.push(op1 + " " + op + ")");
+                }
+            } catch (Exception e ) {
+                stack.push(token);
+            }
+        }
+        resultat.append(stack.pop());
+        return resultat.toString();
     }
 
     public Integer rand(int max){
