@@ -4,7 +4,7 @@
 
 DROP DATABASE IF EXISTS Calcul_Mental;
 CREATE DATABASE Calcul_Mental;
-
+USE Calcul_Mental;
 #------------------------------------------------------------
 # Table: PLAYER
 #------------------------------------------------------------
@@ -32,4 +32,3 @@ CREATE TABLE GAME(
 
 	,CONSTRAINT GAME_PLAYER_FK FOREIGN KEY (id_PLAYER) REFERENCES PLAYER(id)
 )ENGINE=InnoDB;
-
