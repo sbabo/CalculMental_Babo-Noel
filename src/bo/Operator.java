@@ -37,7 +37,7 @@ public enum Operator {
                 resultat = Math.sqrt(operands[0]);
                 break;
             case INV:
-
+                resultat = 1 / operands[0];
                 break;
             default:
                 break;

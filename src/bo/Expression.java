@@ -15,11 +15,11 @@ public class Expression {
         StringBuilder resultat = new StringBuilder();
         int base = 0;
 
-        base += rand(fourchette);
+        base += rand(fourchette) + 1;
         resultat.append(base + " ");
         for (int i=0; i < difficulte -1 ; i++) {
                 int operande = 0;
-                operande += rand(fourchette);
+                operande += rand(fourchette) + 1;
                 resultat.append(operande + " ");
                 resultat.append(tabOp.get(rand(4)) + " ");
         }
@@ -28,7 +28,7 @@ public class Expression {
         resultat.append(operandeUnaire + " ");
 
         resultat.append(tabOp.get(rand(4)) + " ");
-        resultat.append(tabOp.get(randUnaire(1)) + " ");
+        resultat.append(tabOp.get(randUnaire(2)) + " ");
 
         return resultat.toString();
     }
@@ -46,8 +46,8 @@ public class Expression {
                 if ( op.getType() == 1 ) {
                     Double op1 = 0d;
                     Double op2 = 0d;
-                    op1 = stack.pop();
                     op2 = stack.pop();
+                    op1 = stack.pop();
                     stack.push(op.eval(op1, op2));
                 } else {
                     Double op1 = 0d;
