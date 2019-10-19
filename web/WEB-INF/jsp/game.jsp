@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="<%= request.getContextPath()%>/css/gameStyle.scss"/>
 </head>
 <body>
+<div class="callout large primary">
+    <div class="row column text-center">
+        <h1>Question n°${sessionScope.noquestion} :</h1>
+    </div>
+</div>
 <div class="wrapper">
     <form id="question-form" action="game?action=NEXT&reponse=" method="POST" class="box a">
 
         <input id="form-method" type="hidden" name="form-method" value="NEXT"/>
         <input id="form-id" type="hidden" name="form-id" value=""/>
         <div class="question">
-            <h1>Question n°${sessionScope.noquestion} :</h1>
             <p>${sessionScope.questions}</p>
             <p>${sessionScope.rep}</p>
             <div class="rep">
