@@ -24,11 +24,11 @@ CREATE TABLE PLAYER(
 
 CREATE TABLE GAME(
         id_PLAYER Int NOT NULL ,
-        id        Int NOT NULL ,
+        id        Int Auto_increment NOT NULL ,
         PSEUDO    Varchar (50) NOT NULL ,
         SCORE     Int NOT NULL ,
-        DATE      Date NOT NULL
-	,CONSTRAINT GAME_PK PRIMARY KEY (id_PLAYER,id)
+        DATE      Varchar (50) NOT NULL
+	,CONSTRAINT GAME_PK PRIMARY KEY (id)
 
 	,CONSTRAINT GAME_PLAYER_FK FOREIGN KEY (id_PLAYER) REFERENCES PLAYER(id)
 )ENGINE=InnoDB;

@@ -11,13 +11,17 @@
 </head>
 <body>
 <div class="wrapper">
-    <form id="question-form" action="game?action=NEXT" method="POST" class="box a">
+    <form id="question-form" action="game?action=NEXT&reponse=" method="POST" class="box a">
 
         <input id="form-method" type="hidden" name="form-method" value="NEXT"/>
         <input id="form-id" type="hidden" name="form-id" value=""/>
         <div class="question">
             <h1>Question n°${sessionScope.noquestion} :</h1>
             <p>${sessionScope.questions}</p>
+            <p>${sessionScope.rep}</p>
+            <div class="rep">
+                <input type="text" placeholder="Reponse" name="form-reponse"/>
+            </div>
             <input type="submit" class="button" value="${sessionScope.valeurButton}"/>
         </div>
     </form>
