@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.List;
 
 public class PlayerDAO extends DAO<Player>{
-    private static final String AUTHENT_QUERY = "SELECT * FROM user WHERE login = ? AND password = ?";
+    private static final String AUTHENT_QUERY = "SELECT * FROM player WHERE login = ? AND password = ?";
     private static final String REGISTER_QUERY = "INSERT INTO player (name, login, password) values (?, ?, ?)";
 
     public PlayerDAO( String dbUrl, String dbLogin, String dbPwd ) {

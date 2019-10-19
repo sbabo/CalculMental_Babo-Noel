@@ -6,13 +6,13 @@ import java.util.Date;
 public class Game implements Serializable {
 
     private String pseudo;
-    private String score;
+    private int score;
     private Date date;
 
     public Game() {
     }
 
-    public Game(String pseudo, String score, Date date) {
+    public Game(String pseudo, int score, Date date) {
         this.pseudo = pseudo;
         this.score = score;
         this.date = date;
@@ -26,11 +26,11 @@ public class Game implements Serializable {
         this.pseudo = pseudo;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

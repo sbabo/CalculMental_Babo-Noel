@@ -1,69 +1,43 @@
 <html>
 <head>
-    <title>HighScore</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>HighScore</title>
+        <link rel="stylesheet" type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css"
+              href="<%= request.getContextPath()%>/vendor/foundation-6.5.1/css/foundation.min.css"/>
+        <link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css"/>
+    </head>
 
 </head>
 <body>
- <div class="wrapper">
-     <table BORDER="1">
-         <caption> HighScore </caption>
-         <tr>
-             <th> Pseudo </th>
-             <th> Score </th>
-             <th> Date </th>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-         <tr>
-             <td> Titre B1 </td>
-             <td> Valeur B2 </td>
-             <td> Valeur B3 </td>
-         </tr>
-     </table>
-     <a class="button" href="<c:url value="" />"/>
- </div>
+<div class="callout large primary">
+    <div class="row column text-center">
+        <h1>Calcul Mental - HighScore</h1>
+    </div>
+</div>
+<div class="row small-5 small-centered">
+<table class="responsive-card-table unstriped">
+    <thead>
+    <tr>
+        <th>Pseudo</th>
+        <th>Score</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="score" items="${sessionScope.scores}" varStatus="status">
+        <tr>
+            <td data-label="Pseudo">${score.pseudo}</td>
+            <td data-label="Score">${score.score}</td>
+            <td data-label="Date">${score.date}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
+
 </body>
 </html>

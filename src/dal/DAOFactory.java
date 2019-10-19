@@ -1,5 +1,6 @@
 package dal;
 
+import bo.Game;
 import bo.Player;
 
 import javax.servlet.ServletContext;
@@ -27,10 +28,6 @@ public class DAOFactory {
 
     public static IDAO<Player> getPlayerDAO() {
         IDAO<Player> dao = null;
-        System.out.println(mode);
-        System.out.println(dbUrl);
-        System.out.println(dbLogin);
-        System.out.println(dbPwd);
         switch ( mode ) {
             case "JDBC" :
                 dao = new PlayerDAO(dbUrl, dbLogin, dbPwd);
@@ -43,4 +40,17 @@ public class DAOFactory {
         return dao;
     }
 
+    public static IDAO<Game> getGameDAO() {
+        IDAO<Game> dao = null;
+        switch ( mode ) {
+            case "JDBC" :
+                dao = new GameDAO(dbUrl, dbLogin, dbPwd);
+                break;
+            case "JPA" : break;
+            default:
+                //TODO
+                dao = null;
+        }
+        return dao;
+    }
 }
