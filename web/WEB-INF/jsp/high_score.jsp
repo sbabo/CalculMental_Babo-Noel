@@ -37,6 +37,7 @@
     </c:forEach>
     </tbody>
 </table>
+    <p>Votre plus haut score est de : 9 et date du</p>
 </div>
 
 </body>

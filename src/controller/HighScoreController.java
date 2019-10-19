@@ -26,6 +26,9 @@ public class HighScoreController extends HttpServlet {
 
         List<Game> dataSession = ( List<Game> ) session.getAttribute("scores");
 
+        int id = ( int ) request.getParameter("id");
+        System.out.println(request.getParameter( "id" ));
+
         if ( null == dataSession ) {
             dataSession = new ArrayList<>();
             dataSession = model.highscore();
