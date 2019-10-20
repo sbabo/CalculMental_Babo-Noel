@@ -45,14 +45,21 @@ public class GameDAO extends DAO<Game>{
         return highscore;
     }
 
-    public Game enregister(String idplayer, String pseudo, String score, String date) throws SQLException {
+    public Game enregister(int idplayer, String pseudo, int score, String date) throws SQLException {
         Game game = null;
         try (Connection connection = DriverManager.getConnection(dbUrl, dbLogin, dbPwd );
         PreparedStatement ps = connection.prepareStatement(ENREGISTRER_SCORE_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, idplayer);
+            ps.setInt(1, idplayer);
             ps.setString(2, pseudo);
-            ps.setString(3, score);
+            ps.setInt(3, score);
             ps.setString(4, date);
+            int i = ps.executeUpdate();
+            if (i != 0 ) {
+                game = new Game();
+                game.setPseudo(pseudo);
+                game.setScore(score);
+                game.setDate(date);
+            }
             ps.executeUpdate();
         }  catch (SQLException e) {
             System.out.println(e.getMessage());

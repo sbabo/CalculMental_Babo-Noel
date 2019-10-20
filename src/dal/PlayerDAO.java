@@ -35,6 +35,7 @@ public class PlayerDAO extends DAO<Player>{
                 if ( rs.next() ) {
                     user = new Player();
                     user.setId(rs.getString("id"));
+                    user.setPseudo(rs.getString("name"));
                     user.setLogin( rs.getString( "login" ) );
                     user.setPassword( rs.getString( "password" ) );
                     //user.setNbConnections( rs.getInt( "connections" ) + 1 );

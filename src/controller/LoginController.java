@@ -25,13 +25,8 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession( true );
 
         session.setAttribute("id", id);
-        //int id = 1;
-        //request.setAttribute("id", id);
         if ( model.isConnected(request) ) {
             response.sendRedirect(request.getContextPath() + PAGE_HOME_JSP);
-//            request.getRequestDispatcher("/WEB-INF/jsp/high_score.jsp").forward(request, response);
-
-//            this.getServletContext().getRequestDispatcher( "/highscore" ).forward( request, response );
 
         } else {
             request.getRequestDispatcher(PAGE_LOGIN_JSP).forward(request, response);

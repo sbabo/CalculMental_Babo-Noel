@@ -16,12 +16,12 @@ public class GameBean implements Serializable {
     private static final String FORM_FIELD_LOGIN = "form-login";
     private static final String FORM_FIELD_SCORE = "form-score";
 
-    private String idplayer;
+    private int idplayer;
     private String pseudo;
-    private String score;
+    private int score;
     private String date;
 
-    public void enregistrerScore(String idplayer, String pseudo, String score, String date) {
+    public void enregistrerScore(int idplayer, String pseudo, int score, String date) {
 
         this.idplayer = idplayer;
         this.pseudo = pseudo;
@@ -42,11 +42,11 @@ public class GameBean implements Serializable {
         }
     }
 
-    public String getIdplayer() {
+    public int getIdplayer() {
         return idplayer;
     }
 
-    public void setIdplayer(String idplayer) {
+    public void setIdplayer(int idplayer) {
         this.idplayer = idplayer;
     }
 
@@ -58,11 +58,11 @@ public class GameBean implements Serializable {
         this.pseudo = pseudo;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
