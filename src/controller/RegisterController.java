@@ -16,6 +16,13 @@ public class RegisterController extends HttpServlet {
     private static final String PAGE_REGISTER_JSP = "/WEB-INF/jsp/register.jsp";
     private static final String PAGE_LOGIN_JSP = "/login";
 
+    /**
+     * DoGet GameController
+     * @param req req
+     * @param resp resp
+     * @throws ServletException Servlet excep
+     * @throws IOException IOExcep
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -27,6 +34,13 @@ public class RegisterController extends HttpServlet {
         }
     }
 
+    /**
+     * DoPost RegisterController
+     * @param req req
+     * @param resp resp
+     * @throws ServletException Servlet Exception
+     * @throws IOException IOExeption
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RegistrationBean register = new RegistrationBean();

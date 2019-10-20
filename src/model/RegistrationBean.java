@@ -22,6 +22,10 @@ public class RegistrationBean implements Serializable {
     private String password;
     private String registerResult;
 
+    /**
+     * Enregistrer un nouvel utilisateur
+     * @param req req
+     */
     public void register(HttpServletRequest req) {
 
         name = req.getParameter(FORM_FIELD_NAME);
@@ -31,9 +35,9 @@ public class RegistrationBean implements Serializable {
         PlayerDAO dao = ( PlayerDAO ) DAOFactory.getPlayerDAO();
         Player player = null;
 
-        try {
+        try { //Essaie d'enregistrer un nouvel utilisateur en base
             player = dao.register(name, login, password);
-            if ( player != null ) {
+            if ( player != null ) { //si la dao retroune quelque chose
                 HttpSession session = req.getSession( true );
                 session.setAttribute( ATT_INSC_SESSION, player );
                 registerResult = "Inscription réussie !";
@@ -41,13 +45,18 @@ public class RegistrationBean implements Serializable {
                 registerResult = "Inscription échouée !";
 
             }
-        } catch ( SQLException e ) {
+        } catch ( SQLException e ) { // en cas d'erreur SQL
             System.out.println(e.getMessage());
             registerResult = "Inscription échouée : Pb de connexion à la base de données !!! ";
         }
 
     }
 
+    /**
+     * Permet de vérifier si l'utilisateur est inscrit
+     * @param request req
+     * @return boolean
+     */
     public boolean estInscrit( HttpServletRequest request ) {
         HttpSession session = request.getSession();
         Player connectedUser = ( Player ) session.getAttribute( ATT_INSC_SESSION );

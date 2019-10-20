@@ -17,7 +17,11 @@ public enum Operator {
         this.type = type;
     }
 
-
+    /**
+     * Resolution des calculs
+     * @param operands operands
+     * @return double
+     */
     public double eval(double... operands){
         double resultat = 0;
         switch (this) {

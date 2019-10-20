@@ -21,6 +21,13 @@ public class GameBean implements Serializable {
     private int score;
     private String date;
 
+    /**
+     * Enregistrer score de partie
+     * @param idplayer idplayer
+     * @param pseudo pseudo
+     * @param score score
+     * @param date date
+     */
     public void enregistrerScore(int idplayer, String pseudo, int score, String date) {
 
         this.idplayer = idplayer;
@@ -30,8 +37,9 @@ public class GameBean implements Serializable {
         GameDAO dao = ( GameDAO ) DAOFactory.getGameDAO();
         Game game = null;
         try {
+            //envoie a la dao de la partie a enregistrer
             game = dao.enregister(idplayer, pseudo, score, date);
-            if ( game != null ) {
+            if ( game != null ) { //en fonction de la réussite ou non
                 System.out.println("Inscription réussie !");
             } else {
                 System.out.println("Inscription échouée !");

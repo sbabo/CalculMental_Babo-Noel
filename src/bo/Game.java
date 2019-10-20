@@ -9,9 +9,18 @@ public class Game implements Serializable {
     private int score;
     private String date;
 
+    /**
+     * Constructeur par défaut
+     */
     public Game() {
     }
 
+    /**
+     * Constructeur de base
+     * @param pseudo pseudo
+     * @param score score
+     * @param date date
+     */
     public Game(String pseudo, int score, String date) {
         this.pseudo = pseudo;
         this.score = score;

@@ -22,11 +22,13 @@
         <input id="form-id" type="hidden" name="form-id" value=""/>
         <div class="question">
             <p>${sessionScope.questions}</p>
-            <p>${sessionScope.rep}</p>
             <div class="rep">
                 <input type="text" placeholder="Reponse" name="form-reponse"/>
             </div>
             <input type="submit" class="button" value="${sessionScope.valeurButton}"/>
+            <div>
+                <p class="instruction">Les réponses doivent être au format : "XX,XX" (Virgule et deux chiffres derrière la virgule)</p>
+            </div>
         </div>
     </form>
 </div>

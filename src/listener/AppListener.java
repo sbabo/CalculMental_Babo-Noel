@@ -12,6 +12,10 @@ import java.util.logging.Logger;
 public class AppListener implements ServletContextListener {
     private static final Logger LOGGER = Logger.getLogger( AppListener.class.getName() );
 
+    /**
+     * Context Initialazer
+     * @param sce sce
+     */
     @Override
     public void contextInitialized( ServletContextEvent sce ) {
         LOGGER.log( Level.INFO, "Initialisation du contexte applicatif... " );
@@ -22,6 +26,10 @@ public class AppListener implements ServletContextListener {
         }
     }
 
+    /**
+     * Destructeur de context
+     * @param sce sce
+     */
     @Override
     public void contextDestroyed( ServletContextEvent sce ) {
         LOGGER.log( Level.INFO, "Desctruction du contexte applicatif... " );

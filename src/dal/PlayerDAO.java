@@ -24,15 +24,22 @@ public class PlayerDAO extends DAO<Player>{
         return null;
     }
 
+    /**
+     * Permet d'effectuer l'authentification du Player
+     * @param login login
+     * @param password password
+     * @return Player
+     * @throws SQLException SQLExecp
+     */
     public Player authenticate( String login, String password ) throws SQLException {
 
         Player user = null;
-        try (Connection connection = DriverManager.getConnection( dbUrl, dbLogin, dbPwd );
+        try (Connection connection = DriverManager.getConnection( dbUrl, dbLogin, dbPwd ); //test connection BDD
              PreparedStatement ps = connection.prepareStatement(AUTHENT_QUERY) ) {
             ps.setString( 1, login );
             ps.setString( 2, password );
-            try ( ResultSet rs = ps.executeQuery() ) {
-                if ( rs.next() ) {
+            try ( ResultSet rs = ps.executeQuery() ) { //Execution de la requête
+                if ( rs.next() ) { //renseignement des infos remonté
                     user = new Player();
                     user.setId(rs.getString("id"));
                     user.setPseudo(rs.getString("name"));
@@ -46,15 +53,23 @@ public class PlayerDAO extends DAO<Player>{
         return user;
     }
 
+    /**
+     * Enregistrement d'un Player
+     * @param name name
+     * @param login login
+     * @param password password
+     * @return Palyer
+     * @throws SQLException SQLException
+     */
     public Player register( String name, String login, String password) throws SQLException {
 
         Player player = null;
-        try (Connection connection = DriverManager.getConnection(dbUrl, dbLogin, dbPwd );
+        try (Connection connection = DriverManager.getConnection(dbUrl, dbLogin, dbPwd ); // essaie de connection BDD
         PreparedStatement ps = connection.prepareStatement(REGISTER_QUERY, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, name);
             ps.setString(2, login);
             ps.setString(3, password);
-            int i = ps.executeUpdate();
+            int i = ps.executeUpdate(); //Execution requete;
             if (i != 0 ) {
                 player = new Player();
                 player.setPseudo(name);

@@ -9,9 +9,18 @@ public class Player implements Serializable {
     private String login;
     private String password;
 
+    /**
+     * Constructeur par défaut
+     */
     public Player() {
     }
 
+    /**
+     * Constructeur de base
+     * @param pseudo pseudo
+     * @param login login
+     * @param password password
+     */
     public Player(String pseudo, String login, String password) {
         this.pseudo = pseudo;
         this.login = login;

@@ -21,6 +21,10 @@ public class LoginBean implements Serializable {
 
     public LoginBean() {}
 
+    /**
+     * Vérification de la connexion de l'user
+     * @param request
+     */
     public void authenticate( HttpServletRequest request ) {
 
         login = request.getParameter( FORM_FIELD_LOGIN );
@@ -28,9 +32,9 @@ public class LoginBean implements Serializable {
         PlayerDAO dao = ( PlayerDAO ) DAOFactory.getPlayerDAO();
         Player user = null;
         try {
-            user = dao.authenticate( login, pwd );
+            user = dao.authenticate( login, pwd );// envoie des informations de connexion à la dao
 
-            if ( user != null ) {
+            if ( user != null ) { // Si la recherche a ramener un résultat
                 HttpSession session = request.getSession( true );
                 //TODO récupération et incrémentation du nombre de connexions
                 session.setAttribute( ATT_AUTH_SESSION, user );
@@ -38,12 +42,17 @@ public class LoginBean implements Serializable {
             } else {
                 authentResult = "Authentification échouée !!!";
             }
-        } catch ( SQLException e ) {
+        } catch ( SQLException e ) { // en cas d'erreur
             System.out.println(e.getMessage());
             authentResult = "Authentification échouée : Pb de connexion à la base de données !!! ";
         }
     }
 
+    /**
+     * Permet de vérifier si l'user est connecté
+     * @param request req
+     * @return boolean
+     */
     public boolean isConnected( HttpServletRequest request ) {
         HttpSession session = request.getSession();
         Player connectedUser = ( Player ) session.getAttribute( ATT_AUTH_SESSION );

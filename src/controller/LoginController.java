@@ -18,6 +18,13 @@ public class LoginController extends HttpServlet {
 
     private int id = 0;
 
+    /**
+     * DoGet GameController
+     * @param req req
+     * @param resp resp
+     * @throws ServletException Servlet excep
+     * @throws IOException IOExcep
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,6 +40,13 @@ public class LoginController extends HttpServlet {
         }
     }
 
+    /**
+     * DoPost LoginController
+     * @param request req
+     * @param response resp
+     * @throws ServletException Servlet Exception
+     * @throws IOException IOExeption
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

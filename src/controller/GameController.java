@@ -33,11 +33,20 @@ public class GameController extends HttpServlet {
 
     private int score = 0;
 
+    /**
+     * DoGet GameController
+     * @param req req
+     * @param resp resp
+     * @throws ServletException Servlet excep
+     * @throws IOException IOExcep
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Tant que l'on a pas fait 10 questions
         if (question > 9) {
             resp.sendRedirect(req.getContextPath() + PAGE_HIGHSCORE_JSP);
         }
+        // Generation des questions si elle ne l'ont pas été créé
         if (expression.size() == 0) {
             Expression ex = new Expression();
             for (int i = 0; i < 10; i++) {
@@ -47,7 +56,7 @@ public class GameController extends HttpServlet {
             }
         }
         HttpSession session = req.getSession( true );
-
+        // Envoie des informations de la Question a la page
         session.setAttribute("questions", questions.get(question));
         session.setAttribute("noquestion", question + 1);
         session.setAttribute("rep", reponses.get(question));
@@ -59,22 +68,32 @@ public class GameController extends HttpServlet {
         req.getRequestDispatcher(PAGE_GAME_JSP).forward(req, resp);
     }
 
+    /**
+     * DoPost GameController
+     * @param req req
+     * @param resp resp
+     * @throws ServletException Servlet Exception
+     * @throws IOException IOExeption
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter( "action" );
         HttpSession session = req.getSession( true );
         reponse = req.getParameter(REPONSE);
+        // Quand on appuie sur le Bouton
         if ( action.equals(NEXT) ) {
+            // Si on est pas a la derniere question
             if (question < 9){
-                if (reponse.equals(reponses.get(question))) {
+                if (reponse.equals(reponses.get(question))) { // SI la réponse est bonne +1 point
                     score++;
                 }
                 question++;
-            } else {
+            } else { // Si on est a la derniere question
                 if (reponse.equals(reponses.get(question))) {
                     score++;
                     req.setAttribute("form-score", score);
                 }
+                // Création de l'objet GameBean a enregistrer en base
                 Player player = (Player)session.getAttribute("isConntected");
                 int id = Integer.parseInt(player.getId());
                 String pseudo = player.getPseudo();

@@ -32,6 +32,13 @@ public class HighScoreController extends HttpServlet {
 
     public static final String PAGE_HIGH_SCORE_JSP = "/WEB-INF/jsp/high_score.jsp";
 
+    /**
+     * DoGet HighScoreController
+     * @param request req
+     * @param response resp
+     * @throws ServletException Servlet excep
+     * @throws IOException IOExcep
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -42,6 +49,7 @@ public class HighScoreController extends HttpServlet {
 
         List<Game> dataSession = ( List<Game> ) session.getAttribute("scores");
         List<Game> user_highscore = ( List<Game> ) session.getAttribute("highscores");
+        //Recherche des meilleurs score pour afficher dans le tableau
         if ( null == dataSession ) {
             dataSession = new ArrayList<>();
             user_highscore = new ArrayList<>();
@@ -54,9 +62,17 @@ public class HighScoreController extends HttpServlet {
         request.getRequestDispatcher(PAGE_HIGH_SCORE_JSP).forward(request, response);
     }
 
+    /**
+     * DoPost HighScoreController
+     * @param request req
+     * @param response resp
+     * @throws ServletException Servlet Exception
+     * @throws IOException IOExeption
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter( "action" );
+        //Redirection vers la page Game si on clique sur le bouton nouvelle partie
         game = request.getParameter(NEWGAME);
         response.sendRedirect(request.getContextPath() + PAGE_GAME_JSP);
     }
