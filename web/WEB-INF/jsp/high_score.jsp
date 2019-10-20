@@ -37,7 +37,12 @@
     </c:forEach>
     </tbody>
 </table>
-    <p>Votre plus haut score est de : 9 et date du</p>
+    <c:forEach var="user" items="${sessionScope.highscores}" varStatus="status">
+        <p>Votre plus haut score est de : ${user.score} et date du ${user.date}</p>
+    </c:forEach>
+    <form>
+        <p><input type="submit" class="button expanded" value="Nouvelle partie"></input></p>
+    </form>
 </div>
 
 </body>

@@ -26,15 +26,23 @@ public class HighScoreController extends HttpServlet {
         HttpSession session = request.getSession( true );
         Player player = (Player)session.getAttribute("isConntected");
         int id = Integer.parseInt(player.getId());
+        System.out.println(id);
 
         List<Game> dataSession = ( List<Game> ) session.getAttribute("scores");
+        List<Game> user_highscore = ( List<Game> ) session.getAttribute("highscores");
         if ( null == dataSession ) {
             dataSession = new ArrayList<>();
+            user_highscore = new ArrayList<>();
+            user_highscore = model.user_highscore(id);
             dataSession = model.highscore();
             for (Game game: dataSession) {
+               // System.out.println(game.getScore());
+            }
+            for (Game game: user_highscore) {
                 System.out.println(game.getScore());
             }
             session.setAttribute( "scores", dataSession );
+            session.setAttribute("highscores", user_highscore);
         }
 
         request.getRequestDispatcher(PAGE_HIGH_SCORE_JSP).forward(request, response);

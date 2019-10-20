@@ -28,4 +28,22 @@ public class ScoreBean implements Serializable {
         }
         return highscore;
     }
+
+    public List<Game> user_highscore(int id) {
+        GameDAO dao = ( GameDAO ) DAOFactory.getGameDAO();
+        List<Game> highscore = null;
+        try {
+            highscore = dao.highscore_user(id);
+
+            if ( highscore.size() <= 0 ) {
+                System.out.println("Récupération des highscores échouée !");
+            } else {
+                System.out.println("Récupération des highscores réussie !");
+            }
+        } catch ( SQLException e ) {
+            System.out.println(e.getMessage());
+            System.out.println("Récupération des highscores échouée : Pb de connexion à la base de données !!! ");
+        }
+        return highscore;
+    }
 }

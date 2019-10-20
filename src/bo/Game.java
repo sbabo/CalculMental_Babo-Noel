@@ -7,12 +7,12 @@ public class Game implements Serializable {
 
     private String pseudo;
     private int score;
-    private Date date;
+    private String date;
 
     public Game() {
     }
 
-    public Game(String pseudo, int score, Date date) {
+    public Game(String pseudo, int score, String date) {
         this.pseudo = pseudo;
         this.score = score;
         this.date = date;
@@ -34,11 +34,11 @@ public class Game implements Serializable {
         this.score = score;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
